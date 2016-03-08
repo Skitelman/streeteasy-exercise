@@ -19,8 +19,13 @@ class Listing
   end
 
   def parse_address(raw_address)
-    self.address = raw_address.split("#").first.strip
-    self.unit = raw_address.split("#").last unless raw_address.split("#").size < 2
+    address_words = raw_address.split(" ")
+    if address_words.last.include?("#") || address_words.last.downcase.include?("floor")
+      self.address = address_words[0...-1].join(" ")
+      self.unit = address_words[-1].gsub("#","")
+    else
+      self.address = raw_address.strip
+    end
   end
 
   def parse_url(raw_url)

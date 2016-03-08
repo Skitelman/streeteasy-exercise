@@ -13,10 +13,9 @@ class Runner
     page1_rental_scraper.get_addresses
     page2_rental_scraper = Scraper.new("http://streeteasy.com/for-rent/soho?page=2&sort_by=price_desc")
     page2_rental_scraper.get_addresses
-    binding.pry
     File.write('sales.json', Listing.most_expensive_sales_attributes.to_json)
     File.write('rentals.json', Listing.most_expensive_rentals_attributes.to_json)
-    puts "great success"
+    puts "Great Success!"
   end
 
 end
