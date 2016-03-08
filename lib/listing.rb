@@ -39,7 +39,7 @@ class Listing
   end
 
   def save
-    unless @@all.find{|listing| listing.address == self.address && listing.unit == self.unit }
+    unless @@all.find{|listing| listing.address == self.address && listing.unit == self.unit && listing.listing_class == self.listing_class }
       @@all << self
     end
   end
